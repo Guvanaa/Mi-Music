@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build && node scripts/build-apk.js",
+    "build:apk": "node scripts/build-apk.js",
+    "build:rpk": "node scripts/build-rpk.js",
+    "build": "vite build && node scripts/build-apk.js && node scripts/build-rpk.js",
     "lint": "vite build",
     "preview": "vite preview --host 0.0.0.0 --port 3000",
     "test": "vitest run"

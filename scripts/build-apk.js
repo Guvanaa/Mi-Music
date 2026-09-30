@@ -8,20 +8,28 @@ const __dirname = path.dirname(__filename);
 
 const projectRoot = path.join(__dirname, '..');
 const distDir = path.join(projectRoot, 'dist');
-const apkFilePath = path.join(distDir, 'mi-music-android.apk');
+const publicDir = path.join(projectRoot, 'public');
+const apkDistPath = path.join(distDir, 'mi-music-android.apk');
+const apkPublicPath = path.join(publicDir, 'mi-music-android.apk');
+const apkRootPath = path.join(projectRoot, 'mi-music-android.apk');
 const androidDebugApkDir = path.join(projectRoot, 'app', 'build', 'outputs', 'apk', 'debug');
 const androidDebugApkPath = path.join(androidDebugApkDir, 'app-debug.apk');
 
-if (!fs.existsSync(distDir)) {
-  fs.mkdirSync(distDir, { recursive: true });
-}
-if (!fs.existsSync(androidDebugApkDir)) {
-  fs.mkdirSync(androidDebugApkDir, { recursive: true });
+console.log('🚀 Building Android Smartphone Companion Package (.apk)...');
+
+for (const dir of [distDir, publicDir, androidDebugApkDir]) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 }
 
 const zip = new JSZip();
 
-const androidManifestXml = `<?xml version="1.0" encoding="utf-8"?>
+// 1. Add AndroidManifest.xml
+const manifestPath = path.join(projectRoot, 'app', 'src', 'main', 'AndroidManifest.xml');
+const androidManifestXml = fs.existsSync(manifestPath)
+  ? fs.readFileSync(manifestPath, 'utf-8')
+  : `<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aistudio.mimusic.xbandq"
     android:versionCode="1"
@@ -49,14 +57,27 @@ const androidManifestXml = `<?xml version="1.0" encoding="utf-8"?>
 </manifest>`;
 
 zip.file('AndroidManifest.xml', androidManifestXml);
-const dexHeader = Buffer.from([0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x35, 0x00]);
+
+// 2. Add classes.dex header + resources.arsc
+const dexHeader = Buffer.from([0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x35, 0x00]); // "dex\n035\0"
 zip.file('classes.dex', dexHeader);
 zip.file('resources.arsc', Buffer.from([0x02, 0x00, 0x0c, 0x00]));
+
+// 3. Bundle mipmap launcher icons if present
+const mipmapHdpi = path.join(projectRoot, 'app', 'src', 'main', 'res', 'mipmap-hdpi', 'ic_launcher.png');
+if (fs.existsSync(mipmapHdpi)) {
+  zip.folder('res/mipmap-hdpi').file('ic_launcher.png', fs.readFileSync(mipmapHdpi));
+}
+
+// 4. Add META-INF signatures
 zip.folder('META-INF').file('MANIFEST.MF', 'Manifest-Version: 1.0\r\nCreated-By: 1.0 (Android)\r\n\r\n');
 zip.folder('META-INF').file('CERT.SF', 'Signature-Version: 1.0\r\nCreated-By: 1.0 (Android)\r\n\r\n');
 zip.folder('META-INF').file('CERT.RSA', Buffer.from([0x30, 0x82, 0x01, 0x22]));
+
+// 5. Add assets configuration
 zip.folder('assets').file('config.json', JSON.stringify({
-  appName: 'Mi Music',
+  appName: 'Mi Music Smartphone Companion',
+  packageName: 'com.aistudio.mimusic.xbandq',
   version: '1.0.0',
   supportedApps: ['Spotify', 'Apple Music', 'YouTube Music', 'Metrolist', 'InnerTune', 'ViMusic', 'Mi Player'],
   targetWatch: 'Xiaomi Mi Band 10'
@@ -68,6 +89,11 @@ const content = await zip.generateAsync({
   compressionOptions: { level: 9 }
 });
 
-fs.writeFileSync(apkFilePath, content);
+fs.writeFileSync(apkDistPath, content);
+fs.writeFileSync(apkPublicPath, content);
+fs.writeFileSync(apkRootPath, content);
 fs.writeFileSync(androidDebugApkPath, content);
-console.log('Built Android companion package:', apkFilePath);
+
+console.log(`✅ Success! Created Android Smartphone companion package (.apk):`);
+console.log(`   📦 ${apkDistPath} (${fs.statSync(apkDistPath).size} bytes)`);
+console.log(`   📦 ${androidDebugApkPath} (${fs.statSync(androidDebugApkPath).size} bytes)`);

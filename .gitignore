@@ -1,5 +1,12 @@
-node_modules/
-dist/
+*.iml
+.gradle
+/local.properties
+/.idea
 .DS_Store
-coverage/
-*.log
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+.env
+app/build

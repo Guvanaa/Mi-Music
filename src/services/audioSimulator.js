@@ -1,4 +1,3 @@
-// Web Audio API Synth for realistic playback sound effects and audio feedback
 class AudioEngine {
   constructor() {
     this.audioCtx = null;

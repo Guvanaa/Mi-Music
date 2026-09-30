@@ -1,14 +1,13 @@
 {
-  "name": "mi-music",
+  "name": "mi-music-smartwatch-controller",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build && node scripts/build-rpk.js && node scripts/build-apk.js",
-    "build:rpk": "node scripts/build-rpk.js",
-    "build:apk": "node scripts/build-apk.js",
-    "preview": "vite preview",
+    "build": "vite build && node scripts/build-apk.js",
+    "lint": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
     "test": "vitest run"
   },
   "dependencies": {

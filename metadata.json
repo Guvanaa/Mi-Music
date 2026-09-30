@@ -1,0 +1,8 @@
+{
+  "name": "Mi Music",
+  "description": "Smartphone Now Playing Mirror & Remote Controller for Xiaomi Mi Band 10 with cover art, synced live lyrics, EQ presets, sleep timer, and multi-app source switching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

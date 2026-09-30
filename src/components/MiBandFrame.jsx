@@ -11,19 +11,15 @@ export const MiBandFrame = ({ children, activeTab, onTabChange }) => {
       {/* Mi Band 10 Body / Bezel */}
       <div className="relative w-[210px] h-[480px] bg-black rounded-[52px] p-[10px] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border-[4px] border-slate-700 ring-1 ring-slate-800 flex flex-col items-center justify-between overflow-hidden">
 
-        {/* Subtle Metallic Bezel Gloss */}
         <div className="absolute inset-0 rounded-[48px] border border-white/10 pointer-events-none z-20" />
         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white/5 to-transparent rounded-t-[48px] pointer-events-none z-20" />
 
-        {/* Curved AMOLED Screen Area */}
         <div className="w-full h-full bg-black rounded-[42px] overflow-hidden flex flex-col justify-between relative z-10 font-sans text-white border border-slate-900">
 
-          {/* Main Display View Content */}
           <div className="flex-1 overflow-hidden relative flex flex-col">
             {children}
           </div>
 
-          {/* Smartwatch Bottom Navigation Bar */}
           <div className="h-10 bg-black/90 backdrop-blur-md border-t border-slate-900/80 flex items-center justify-around px-3 z-30 shrink-0">
             <button
               onClick={() => onTabChange('nowplaying')}

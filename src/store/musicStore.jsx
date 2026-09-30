@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, createContext, useContext } from 'react';
-import { INITIAL_SONGS, MUSIC_APPS, EQ_PRESETS } from '../data/mockSongs';
+import { INITIAL_SONGS, MUSIC_APPS } from '../data/mockSongs';
 
 const MusicStoreContext = createContext(null);
 
@@ -11,14 +11,29 @@ export const MusicProvider = ({ children }) => {
   const [volume, setVolume] = useState(70);
   const [activeAppId, setActiveAppId] = useState('spotify');
   const [isConnected, setIsConnected] = useState(true);
-  const [lastActionSource, setLastActionSource] = useState('Smartphone'); // 'Smartphone' or 'Mi Band 10'
-  const [currentEq, setCurrentEq] = useState('bass'); // 'flat', 'bass', 'pop', 'vocal'
-  const [sleepTimerMinutes, setSleepTimerMinutes] = useState(0); // 0 = off
+  const [lastActionSource, setLastActionSource] = useState('Smartphone');
+  const [currentEq, setCurrentEq] = useState('bass');
+  const [sleepTimerMinutes, setSleepTimerMinutes] = useState(0);
 
   const currentSong = songs.find(s => s.id === currentSongId) || songs[0];
   const activeApp = MUSIC_APPS.find(a => a.id === activeAppId) || MUSIC_APPS[0];
 
-  // Playback timer ticker
+  const nextSong = useCallback((source = 'Smartphone') => {
+    const currentIndex = songs.findIndex(s => s.id === currentSongId);
+    const nextIndex = (currentIndex + 1) % songs.length;
+    setCurrentSongId(songs[nextIndex].id);
+    setCurrentTime(0);
+    setLastActionSource(source);
+  }, [songs, currentSongId]);
+
+  const previousSong = useCallback((source = 'Smartphone') => {
+    const currentIndex = songs.findIndex(s => s.id === currentSongId);
+    const prevIndex = (currentIndex - 1 + songs.length) % songs.length;
+    setCurrentSongId(songs[prevIndex].id);
+    setCurrentTime(0);
+    setLastActionSource(source);
+  }, [songs, currentSongId]);
+
   useEffect(() => {
     let interval = null;
     if (isPlaying) {
@@ -35,9 +50,8 @@ export const MusicProvider = ({ children }) => {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, currentSong.duration]);
+  }, [isPlaying, currentSong.duration, nextSong]);
 
-  // Sleep timer ticker
   useEffect(() => {
     let timer = null;
     if (sleepTimerMinutes > 0 && isPlaying) {
@@ -49,7 +63,7 @@ export const MusicProvider = ({ children }) => {
           }
           return prev - 1;
         });
-      }, 60000); // decrement every minute
+      }, 60000);
     }
     return () => clearInterval(timer);
   }, [sleepTimerMinutes, isPlaying]);
@@ -78,22 +92,6 @@ export const MusicProvider = ({ children }) => {
     setIsPlaying(prev => !prev);
     setLastActionSource(source);
   }, []);
-
-  const nextSong = useCallback((source = 'Smartphone') => {
-    const currentIndex = songs.findIndex(s => s.id === currentSongId);
-    const nextIndex = (currentIndex + 1) % songs.length;
-    setCurrentSongId(songs[nextIndex].id);
-    setCurrentTime(0);
-    setLastActionSource(source);
-  }, [songs, currentSongId]);
-
-  const previousSong = useCallback((source = 'Smartphone') => {
-    const currentIndex = songs.findIndex(s => s.id === currentSongId);
-    const prevIndex = (currentIndex - 1 + songs.length) % songs.length;
-    setCurrentSongId(songs[prevIndex].id);
-    setCurrentTime(0);
-    setLastActionSource(source);
-  }, [songs, currentSongId]);
 
   const seekTime = useCallback((time, source = 'Smartphone') => {
     setCurrentTime(Math.min(Math.max(0, time), currentSong.duration));

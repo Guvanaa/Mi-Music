@@ -19,7 +19,6 @@ import {
   Grid,
   ListMusic,
   Heart,
-  Sliders,
   FileText
 } from 'lucide-react';
 
@@ -54,7 +53,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
   const IconComp = COVER_ICONS[currentSong.coverIcon] || Disc;
   const progressPercent = (currentTime / currentSong.duration) * 100;
 
-  // Active lyric index for smartwatch screen
   const activeLyricIndex = currentSong.lyrics ? currentSong.lyrics.reduce((acc, line, idx) => {
     return currentTime >= line.time ? idx : acc;
   }, 0) : 0;
@@ -71,7 +69,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
 
   return (
     <div className="flex-1 flex flex-col justify-between p-3.5 relative overflow-hidden">
-      {/* Smartwatch Status Bar */}
       <div className="flex items-center justify-between text-[10px] text-slate-400 pb-1 border-b border-slate-900">
         <div className="flex items-center space-x-1.5">
           <div
@@ -92,7 +89,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
         </div>
       </div>
 
-      {/* Album Cover Art / Synced Lyrics Display */}
       {!showBandLyrics ? (
         <div className="my-2 relative flex flex-col items-center">
           <div className="relative w-28 h-28 rounded-2xl overflow-hidden shadow-lg border border-slate-800 group">
@@ -102,7 +98,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
               </div>
             </div>
 
-            {/* Quick Heart Favorite Toggle on Band */}
             <button
               onClick={() => {
                 audioEngine.playHapticClick();
@@ -113,7 +108,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
               <Heart className={`w-3.5 h-3.5 ${currentSong.isFavorite ? 'text-rose-500 fill-current' : ''}`} />
             </button>
 
-            {/* Active play indicator pill */}
             {isPlaying && (
               <div className="absolute top-1.5 right-1.5 bg-black/60 backdrop-blur-md px-1.5 py-0.5 rounded-full flex items-center space-x-0.5">
                 <div className="w-1 h-2 bg-mi-orange animate-pulse rounded-full" />
@@ -132,7 +126,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
         </div>
       )}
 
-      {/* Song Metadata Scrolling Title */}
       <div className="text-center px-1">
         <h3 className="text-xs font-bold text-white line-clamp-1 leading-snug">
           {currentSong.title}
@@ -142,7 +135,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
         </p>
       </div>
 
-      {/* Mini Progress Bar */}
       <div className="my-1.5 px-1">
         <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
           <div
@@ -156,7 +148,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
         </div>
       </div>
 
-      {/* Smartwatch Playback Controls */}
       <div className="flex items-center justify-around my-1">
         <button
           onClick={() => {
@@ -189,7 +180,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
         </button>
       </div>
 
-      {/* Quick Controls Toolbar (Volume, Apps, Tracks, Lyrics) */}
       <div className="flex items-center justify-between pt-1 border-t border-slate-900 text-slate-400">
         <button
           onClick={() => {
@@ -237,7 +227,6 @@ export const BandNowPlaying = ({ onOpenChooser, onOpenTracks }) => {
         </button>
       </div>
 
-      {/* Overlay Volume Control Popup */}
       {showVolumeSlider && (
         <div className="absolute inset-x-2 bottom-12 bg-slate-900/95 backdrop-blur-md border border-slate-800 rounded-xl p-2.5 flex flex-col items-center z-40 shadow-2xl animate-fade-in">
           <div className="flex items-center justify-between w-full mb-1">

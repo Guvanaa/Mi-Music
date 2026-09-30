@@ -4,7 +4,7 @@ export const INITIAL_SONGS = [
     title: 'Midnight City',
     artist: 'M83',
     album: 'Hurry Up, We\'re Dreaming',
-    duration: 243, // 4:03
+    duration: 243,
     appSource: 'spotify',
     coverBg: 'from-purple-900 via-indigo-900 to-black',
     coverIcon: 'Sparkles',
@@ -24,7 +24,7 @@ export const INITIAL_SONGS = [
     title: 'Blinding Lights',
     artist: 'The Weeknd',
     album: 'After Hours',
-    duration: 200, // 3:20
+    duration: 200,
     appSource: 'spotify',
     coverBg: 'from-red-900 via-rose-950 to-black',
     coverIcon: 'Zap',
@@ -42,7 +42,7 @@ export const INITIAL_SONGS = [
     title: 'As It Was',
     artist: 'Harry Styles',
     album: 'Harry\'s House',
-    duration: 167, // 2:47
+    duration: 167,
     appSource: 'apple',
     coverBg: 'from-blue-900 via-sky-950 to-black',
     coverIcon: 'Sun',
@@ -59,7 +59,7 @@ export const INITIAL_SONGS = [
     title: 'Levitating',
     artist: 'Dua Lipa',
     album: 'Future Nostalgia',
-    duration: 203, // 3:23
+    duration: 203,
     appSource: 'metrolist',
     coverBg: 'from-pink-900 via-fuchsia-950 to-black',
     coverIcon: 'Disc',
@@ -76,7 +76,7 @@ export const INITIAL_SONGS = [
     title: 'Starboy',
     artist: 'The Weeknd ft. Daft Punk',
     album: 'Starboy',
-    duration: 230, // 3:50
+    duration: 230,
     appSource: 'spotify',
     coverBg: 'from-amber-900 via-orange-950 to-black',
     coverIcon: 'Flame',
@@ -92,7 +92,7 @@ export const INITIAL_SONGS = [
     title: 'Get Lucky',
     artist: 'Daft Punk',
     album: 'Random Access Memories',
-    duration: 248, // 4:08
+    duration: 248,
     appSource: 'apple',
     coverBg: 'from-yellow-900 via-amber-950 to-black',
     coverIcon: 'Radio',

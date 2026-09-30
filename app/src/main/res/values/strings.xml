@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Mi Music</string>
+    <string name="app_subtitle">Smartphone Now Playing Mirror &amp; Remote Control</string>
+    <string name="band_badge">Mi Band 10</string>
+    <string name="realtime_bt_sync">Real-time Bluetooth Sync</string>
+    <string name="smartphone_music_source">Smartphone Music Source</string>
+    <string name="xiaomi_mi_band_header">Xiaomi Mi Band 10 ("Mi Music")</string>
+    <string name="xiaomi_smartphone">Xiaomi Smartphone</string>
+    <string name="band_connected">Band Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="mi_band_mirroring">Mi Band 10 Mirroring:</string>
+    <string name="music_service_source">Music Service Source</string>
+    <string name="eq_preset">EQ Preset</string>
+    <string name="sleep_timer">Sleep Timer</string>
+    <string name="lyrics">Lyrics</string>
+    <string name="synced_live_lyrics">Synced Live Lyrics</string>
+    <string name="no_lyrics_available">No lyrics available for this track.</string>
+    <string name="smartphone_music_library">Smartphone Music Library</string>
+    <string name="phone_disconnected">Phone Disconnected</string>
+    <string name="connect_phone_hint">Connect phone to stream music metadata to Mi Band 10</string>
+    <string name="live_wrist_lyrics">Live Wrist Lyrics</string>
+    <string name="band_volume">Band Volume</string>
+    <string name="select_app">Select App</string>
+    <string name="control_smartphone_hint">Control smartphone music player app from wrist:</string>
+    <string name="mi_band_sync">Mi Band 10 Sync</string>
+    <string name="phone_tracks">Phone Tracks</string>
+    <string name="select_to_play_on_phone">Select to play on phone</string>
+    <string name="footer_copyright">© 2026 Mi Music for Xiaomi Mi Band 10. Control &amp; mirror now playing media from your wrist.</string>
+    <string name="footer_info">Interactive controls mirror state seamlessly between Smartphone and Mi Band 10.</string>
+</resources>

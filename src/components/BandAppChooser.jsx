@@ -9,7 +9,6 @@ export const BandAppChooser = ({ onClose }) => {
 
   return (
     <div className="flex-1 flex flex-col justify-between p-3 bg-black text-white relative">
-      {/* Header */}
       <div>
         <div className="flex items-center space-x-2 border-b border-slate-900 pb-2 mb-2">
           <button
@@ -28,7 +27,6 @@ export const BandAppChooser = ({ onClose }) => {
           Control smartphone music player app from wrist:
         </p>
 
-        {/* Music App Options */}
         <div className="space-y-1.5 max-h-[300px] overflow-y-auto pr-0.5">
           {MUSIC_APPS.map((app) => {
             const isSelected = activeAppId === app.id;

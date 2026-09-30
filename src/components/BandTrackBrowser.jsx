@@ -1,14 +1,13 @@
 import React from 'react';
 import { useMusicStore } from '../store/musicStore';
 import { audioEngine } from '../services/audioSimulator';
-import { ArrowLeft, Play, Music, Volume2 } from 'lucide-react';
+import { ArrowLeft, Play, Music } from 'lucide-react';
 
 export const BandTrackBrowser = ({ onClose }) => {
   const { songs, currentSong, playSong } = useMusicStore();
 
   return (
     <div className="flex-1 flex flex-col justify-between p-3 bg-black text-white">
-      {/* Header */}
       <div>
         <div className="flex items-center space-x-2 border-b border-slate-900 pb-2 mb-2">
           <button
@@ -23,7 +22,6 @@ export const BandTrackBrowser = ({ onClose }) => {
           <span className="text-xs font-bold text-slate-200">Phone Tracks</span>
         </div>
 
-        {/* Track List */}
         <div className="space-y-1.5 max-h-[310px] overflow-y-auto pr-0.5">
           {songs.map((song) => {
             const isSelected = currentSong.id === song.id;

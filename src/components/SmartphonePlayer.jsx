@@ -65,14 +65,12 @@ export const SmartphonePlayer = () => {
 
   const IconComp = COVER_ICONS[currentSong.coverIcon] || Disc;
 
-  // Get current active line of lyrics based on time
   const activeLyricIndex = currentSong.lyrics ? currentSong.lyrics.reduce((acc, line, idx) => {
     return currentTime >= line.time ? idx : acc;
   }, 0) : 0;
 
   return (
     <div className="w-full max-w-sm mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl flex flex-col justify-between relative overflow-hidden">
-      {/* Top Phone Header / Notch & Status */}
       <div>
         <div className="flex items-center justify-between pb-3 mb-4 border-b border-slate-800 text-xs text-slate-400">
           <div className="flex items-center space-x-2">
@@ -101,7 +99,6 @@ export const SmartphonePlayer = () => {
           </button>
         </div>
 
-        {/* Sync Indicator Banner */}
         <div className="flex items-center justify-between bg-slate-800/80 backdrop-blur-md rounded-xl p-2.5 mb-4 border border-slate-700/50">
           <div className="flex items-center space-x-2 text-xs text-slate-300">
             <Watch className="w-4 h-4 text-mi-orange animate-pulse" />
@@ -112,7 +109,6 @@ export const SmartphonePlayer = () => {
           </span>
         </div>
 
-        {/* Music App Source Selector */}
         <div className="mb-4">
           <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 block">
             Music Service Source
@@ -146,9 +142,7 @@ export const SmartphonePlayer = () => {
           </div>
         </div>
 
-        {/* Convenient Toolbar (EQ, Sleep Timer, Lyrics Toggle) */}
         <div className="grid grid-cols-3 gap-2 mb-4 bg-slate-950/50 p-2 rounded-xl border border-slate-800 text-xs">
-          {/* EQ Preset Selector */}
           <div className="flex flex-col">
             <span className="text-[9px] text-slate-500 uppercase font-semibold flex items-center mb-1">
               <Sliders className="w-3 h-3 mr-1 text-mi-orange" /> EQ Preset
@@ -164,7 +158,6 @@ export const SmartphonePlayer = () => {
             </select>
           </div>
 
-          {/* Sleep Timer */}
           <div className="flex flex-col">
             <span className="text-[9px] text-slate-500 uppercase font-semibold flex items-center mb-1">
               <Moon className="w-3 h-3 mr-1 text-purple-400" /> Sleep Timer
@@ -181,7 +174,6 @@ export const SmartphonePlayer = () => {
             </select>
           </div>
 
-          {/* Synced Lyrics Toggle */}
           <div className="flex flex-col justify-end">
             <button
               onClick={() => setShowLyrics(!showLyrics)}
@@ -197,7 +189,6 @@ export const SmartphonePlayer = () => {
           </div>
         </div>
 
-        {/* Album Artwork or Synced Lyrics Display */}
         <div className="relative aspect-square w-full rounded-2xl overflow-hidden mb-4 shadow-xl border border-slate-800">
           {!showLyrics ? (
             <div className={`w-full h-full bg-gradient-to-br ${currentSong.coverBg} flex flex-col items-center justify-center p-6 text-white relative`}>
@@ -250,7 +241,6 @@ export const SmartphonePlayer = () => {
           )}
         </div>
 
-        {/* Song Info & Scrubber */}
         <div className="mb-4">
           <div className="flex justify-between items-center mb-1">
             <span className="text-xs text-slate-400">{formatTime(currentTime)}</span>
@@ -268,7 +258,6 @@ export const SmartphonePlayer = () => {
           />
         </div>
 
-        {/* Player Controls */}
         <div className="flex items-center justify-between mb-6 px-4">
           <button
             onClick={() => {
@@ -301,7 +290,6 @@ export const SmartphonePlayer = () => {
           </button>
         </div>
 
-        {/* Volume Control */}
         <div className="flex items-center space-x-3 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800 mb-4">
           {volume === 0 ? (
             <VolumeX className="w-4 h-4 text-slate-400" />
@@ -320,7 +308,6 @@ export const SmartphonePlayer = () => {
         </div>
       </div>
 
-      {/* Playlist Preview */}
       <div>
         <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
           <span>Smartphone Music Library</span>

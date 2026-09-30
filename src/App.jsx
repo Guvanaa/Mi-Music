@@ -12,7 +12,6 @@ const MiMusicAppContent = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-4 md:p-8">
-      {/* Top Navigation / Brand Banner */}
       <header className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-between pb-6 mb-8 border-b border-slate-800 gap-4">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-2xl bg-mi-orange flex items-center justify-center shadow-lg shadow-mi-orange/30">
@@ -37,10 +36,7 @@ const MiMusicAppContent = () => {
         </div>
       </header>
 
-      {/* Main Dual Device View */}
       <main className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-start my-auto">
-
-        {/* Left Column: Smartphone App */}
         <section className="flex flex-col items-center">
           <div className="w-full flex items-center justify-between max-w-sm mb-3">
             <h2 className="text-sm font-semibold text-slate-300 flex items-center space-x-2">
@@ -51,7 +47,6 @@ const MiMusicAppContent = () => {
           <SmartphonePlayer />
         </section>
 
-        {/* Right Column: Xiaomi Mi Band 10 Display Mirror */}
         <section className="flex flex-col items-center">
           <div className="w-full flex items-center justify-between max-w-sm mb-3">
             <h2 className="text-sm font-semibold text-slate-300 flex items-center space-x-2">
@@ -75,10 +70,8 @@ const MiMusicAppContent = () => {
             )}
           </MiBandFrame>
         </section>
-
       </main>
 
-      {/* Footer Info */}
       <footer className="max-w-6xl mx-auto w-full pt-8 mt-12 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
         <p>© 2026 Mi Music for Xiaomi Mi Band 10. Control & mirror now playing media from your wrist.</p>
         <div className="flex items-center space-x-2 text-[11px] text-slate-400">

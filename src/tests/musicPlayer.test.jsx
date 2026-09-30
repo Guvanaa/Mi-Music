@@ -33,4 +33,24 @@ describe('Mi Music Application - Smartphone & Xiaomi Mi Band 10 Mirror', () => {
     const selects = screen.getAllByRole('combobox');
     expect(selects.length).toBeGreaterThanOrEqual(2);
   });
+
+  it('supports 3rd party YouTube Music clients like Metrolist', () => {
+    render(<App />);
+    const metrolistBtn = screen.getByRole('button', { name: /Metrolist/i });
+    expect(metrolistBtn).toBeInTheDocument();
+
+    fireEvent.click(metrolistBtn);
+    const metrolistBadges = screen.getAllByText(/Metrolist/i);
+    expect(metrolistBadges.length).toBeGreaterThan(0);
+  });
+
+  it('displays 3rd party clients in Mi Band 10 app chooser', () => {
+    render(<App />);
+    const appsBtn = screen.getByTitle('Switch App Source');
+    fireEvent.click(appsBtn);
+
+    expect(screen.getAllByText('Metrolist').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('InnerTune').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('ViMusic').length).toBeGreaterThanOrEqual(1);
+  });
 });

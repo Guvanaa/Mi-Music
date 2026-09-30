@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build && node scripts/build-rpk.js",
+    "build": "vite build && node scripts/build-rpk.js && node scripts/build-apk.js",
     "build:rpk": "node scripts/build-rpk.js",
+    "build:apk": "node scripts/build-apk.js",
     "preview": "vite preview",
     "test": "vitest run"
   },
   "dependencies": {
+    "jszip": "^3.10.2",
     "lucide-react": "^0.344.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

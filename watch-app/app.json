@@ -1,0 +1,33 @@
+{
+  "app": {
+    "bundleId": "com.xiaomi.miband10.mimusic",
+    "appName": "Mi Music",
+    "version": {
+      "versionName": "1.0.0",
+      "versionCode": 100
+    },
+    "icon": "assets/icon.png",
+    "vender": "Xiaomi Community",
+    "description": "Smart Now Playing Music Mirror and Remote Controller for Xiaomi Mi Band 10."
+  },
+  "permissions": [
+    "device:os.bluetooth",
+    "device:os.media_session",
+    "device:os.vibrate"
+  ],
+  "targets": {
+    "band10": {
+      "designWidth": 192,
+      "designHeight": 490,
+      "shape": "rectangle",
+      "radius": 52
+    }
+  },
+  "module": {
+    "page": {
+      "pages": [
+        "page/index"
+      ]
+    }
+  }
+}

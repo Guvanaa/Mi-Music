@@ -60,7 +60,7 @@ export const INITIAL_SONGS = [
     artist: 'Dua Lipa',
     album: 'Future Nostalgia',
     duration: 203, // 3:23
-    appSource: 'ytmusic',
+    appSource: 'metrolist',
     coverBg: 'from-pink-900 via-fuchsia-950 to-black',
     coverIcon: 'Disc',
     accentColor: '#EC4899',
@@ -110,6 +110,9 @@ export const MUSIC_APPS = [
   { id: 'spotify', name: 'Spotify', color: '#1DB954', iconBg: 'bg-green-600' },
   { id: 'apple', name: 'Apple Music', color: '#FA233B', iconBg: 'bg-red-500' },
   { id: 'ytmusic', name: 'YouTube Music', color: '#FF0000', iconBg: 'bg-rose-600' },
+  { id: 'metrolist', name: 'Metrolist', color: '#E11D48', iconBg: 'bg-rose-500' },
+  { id: 'innertune', name: 'InnerTune', color: '#3B82F6', iconBg: 'bg-blue-600' },
+  { id: 'vimusic', name: 'ViMusic', color: '#8B5CF6', iconBg: 'bg-purple-600' },
   { id: 'mi', name: 'Mi Player', color: '#FF6700', iconBg: 'bg-orange-500' }
 ];
 
